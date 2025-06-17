@@ -4,7 +4,7 @@
 
 ## Diagrama
 
-![Diagrama vagrant](img/diagrama-vagrant.svg.svg)
+![Diagrama vagrant](img/diagrama-vagrant.svg)
 
 ## Estructura del proyecto
 
@@ -86,13 +86,14 @@ config.vm.synced_folder "data-web", "/home/vagrant/data-web", type: "rsync", rsy
 ```
 - Aprovisionamiento
   - Ejecución de scripts de instalación
+  - `run: "once` Solo ejecuta una sola vez el aprovisionamiento
 
 ```bash
 # Generación de llave SSH
-node.vm.provision "shell", path: "scripts/generate-ssh-key.sh", privileged: false, run: "always"
+node.vm.provision "shell", path: "scripts/generate-ssh-key.sh", privileged: false, run: "once"
 
 # Instalación de dependencias con script correspondiente
-node.vm.provision "shell", path: srv[:script], privileged: false, run: "always"
+node.vm.provision "shell", path: srv[:script], privileged: false, run: "once"
 ```
 
 
