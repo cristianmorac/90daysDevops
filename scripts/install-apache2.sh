@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 echo "---Actualización de paquetes---"
 sudo apt-get update && sudo apt-get upgrade -y
 
