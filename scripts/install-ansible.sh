@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # Asegura que ~/.local/bin esté en el PATH (importante para virtualenv)
 export PATH=$HOME/.local/bin:$PATH
 
