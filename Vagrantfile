@@ -4,9 +4,9 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   servers = [
-    { name: "ansible-admin", ip: "172.16.0.11", script: "scripts/install-ansible.sh", folder: "ansible" },
+    { name: "ansible-admin", ip: "172.16.0.11", script: "scripts/install-ansible.sh", folder: "data-ansible" },
     { name: "web-nginx",    ip: "172.16.0.12", script: "scripts/install-nginx.sh",  folder: "data-nginx" },
-    { name: "web2-apache",    ip: "172.16.0.13", script: "scripts/install-apache2.sh",  folder: "data-apache2" }
+    { name: "web-apache2",    ip: "172.16.0.13", script: "scripts/install-apache2.sh",  folder: "data-apache2" }
   ]
 
   servers.each do |srv|
@@ -21,10 +21,10 @@ Vagrant.configure("2") do |config|
       node.vm.synced_folder srv[:folder], "/home/vagrant/#{srv[:folder]}", type: "rsync", rsync__auto: true
 
       # Provisionamiento con generación de llave SSH
-      node.vm.provision "shell", path: "scripts/generate-ssh-key.sh", privileged: false, run: "always"
+      node.vm.provision "shell", path: "scripts/generate-ssh-key.sh", privileged: false, run: "once"
 
       # Provisionamiento con script correspondiente
-      node.vm.provision "shell", path: srv[:script], privileged: false, run: "always"
+      node.vm.provision "shell", path: srv[:script], privileged: false, run: "once"
     end
   end
 end
