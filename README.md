@@ -2,6 +2,10 @@
 
 **Vagrant** es una herramienta para la creación de entornos virtualizados a través de comandos y archivos de configuración.
 
+## Diagrama
+
+![Diagrama vagrant](img/diagrama-vagrant.svg.svg)
+
 ## Estructura del proyecto
 
 ```sh
