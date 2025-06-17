@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # Directorio .ssh
 SSH_DIR="$HOME/.ssh"
 KEY_FILE="$SSH_DIR/id_rsa"
